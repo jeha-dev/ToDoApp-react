@@ -80,16 +80,16 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   align-items:center;
-  width: 16px;
+  min-width: 16px;
   height: 16px;
+  padding: 2px;
   margin-left:6px;
   background-color: #eeeeee;
-  border-radius: 50%;
-  border: 1px solid transparent;
-  transition: border-color 0.25s;
-}
-.btn-close span {
+  color: #333;
   font-size: 9px;
   font-weight: 500;
   font-family: inherit;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  transition: border-color 0.25s;
 }

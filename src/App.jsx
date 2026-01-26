@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css'
 import Lists from './components/Lists'
+import Form from './components/Form'
 
 export default function App() {
   const [todoData, setTodoData] = useState([
@@ -48,18 +49,9 @@ export default function App() {
 
         <Lists todoData={todoData} setTodoData={setTodoData}
         />
+        <Form handleSubmit={handleSubmit} value={value} setValue={setValue} todoData={todoData} setTodoData={setTodoData}
+        />
 
-        <form action="" onSubmit={handleSubmit}>
-          <div className='input-container'>
-            <label className='input-box'>
-              <input name='value' type='text' value={value} onChange={handleChange} placeholder="검색어를 입력해 주세요" />
-              <button type='button' className='btn-close' onClick={()=>handleClick(data.value)}>
-                <span>X</span>
-              </button>
-            </label>
-            <input type='submit' value='입력' className='btn-input' />
-          </div>
-        </form>
       </div>
     </div>
   )
