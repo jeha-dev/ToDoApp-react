@@ -4,18 +4,21 @@ import Lists from './components/Lists'
 import Form from './components/Form'
 
 export default function App() {
-  const [todoData, setTodoData] = useState([
-      {
-        id: '1',
-        title: '공부하기',
-        completed: true,
-      },
-      {
-        id: '2',
-        title: '아기 신발 한 켤레 완성하기',
-        completed: false,
-      }
-  ])
+
+  const initTodoData = localStorage.getItem('todoData') ? JSON.parse(localStorage.getItem('todoData')) : [];
+  const [todoData, setTodoData] = useState(initTodoData);
+  // const [todoData, setTodoData] = useState([
+  //     {
+  //       id: '1',
+  //       title: '공부하기',
+  //       completed: true,
+  //     },
+  //     {
+  //       id: '2',
+  //       title: '아기 신발 한 켤레 완성하기',
+  //       completed: false,
+  //     }
+  // ])
   const [value, setValue] = useState('');
 
 
@@ -24,9 +27,9 @@ export default function App() {
     setTodoData(newTodoData);
   }
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  }
+  // const handleChange = (e) => {
+  //   setValue(e.target.value);
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +39,13 @@ export default function App() {
       completed: false,
     }
 
-    setTodoData([...todoData, newTodo]);
+    if(value.length == 0) {
+      alert('리스트를 작성해주세요')
+    }else {
+      setTodoData([...todoData, newTodo]);
+      localStorage.setItem('todoData', JSON.stringify([...todoData, newTodo]));
+      setValue('');
+    }
     setValue('');
   }
 
@@ -44,7 +53,7 @@ export default function App() {
     <div className='container'>
       <div className='todoBlock'>
         <div className='title'>
-          <h1>ToDoList</h1>
+          <h1>Daily ToDo List</h1>
         </div>
 
         <Lists todoData={todoData} setTodoData={setTodoData}

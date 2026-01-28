@@ -20,7 +20,9 @@
   text-align: center;
 }
 .todoData-wrap {
-  margin: 12px 0;
+  &:has(*) {
+    margin: 12px 0;
+  }
 }
 .input-checkbox {
   display:flex;
